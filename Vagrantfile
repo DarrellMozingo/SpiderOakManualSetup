@@ -15,10 +15,11 @@ $script = <<SCRIPT
 
   chown -R vagrant:vagrant bin SpiderOakONE
 
-  echo "run ./bin/SpiderOakONE"
+  echo "run './bin/SpiderOakONE'"
 SCRIPT
 
 Vagrant.configure(2) do |config|
   config.vm.box = "bento/centos-6.7"
   config.vm.provision "shell", inline: $script
+  config.vm.synced_folder '.', '/vagrant', disabled: true
 end
